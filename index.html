@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gema Swara Wibawa Mukti</title>
+
+<style>
+
+/* =========================
+   DASAR
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#ff8c00;
+    color:#9b0000;
+    overflow-x:hidden;
+}
+
+:root{
+    --orange:#ff8c00;
+    --orange-light:#ffb347;
+    --red:#9b0000;
+    --red-dark:#650000;
+    --cream:#fff0cf;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,140,0,.92);
+    backdrop-filter:blur(12px);
+    border-bottom:2px solid var(--red);
+    z-index:999;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    color:var(--red);
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#fff0cf;
+}
+
+nav ul{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--red);
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:130px 20px 70px;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at 50% 30%,
+        #ffca70 0%,
+        #ff9d19 30%,
+        #ff8c00 65%);
+}
+
+/* dekorasi lingkaran */
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    border:3px solid rgba(155,0,0,.2);
+    border-radius:50%;
+    animation:rotate 20s linear infinite;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:800px;
+    height:800px;
+    border:2px dashed rgba(155,0,0,.18);
+    border-radius:50%;
+    animation:rotate 30s linear infinite reverse;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:950px;
+    animation:fadeUp 1s ease;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 22px;
+    border:2px solid var(--red);
+    border-radius:50px;
+    font-weight:bold;
+    margin-bottom:25px;
+    background:rgba(255,255,255,.15);
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,90px);
+    font-weight:1000;
+    line-height:.95;
+    color:var(--red);
+    text-shadow:
+        4px 4px 0 var(--orange-light),
+        8px 8px 0 rgba(155,0,0,.25);
+    animation:titleMove 3s ease-in-out infinite;
+}
+
+.hero h2{
+    margin-top:20px;
+    font-size:32px;
+    letter-spacing:4px;
+    color:var(--red-dark);
+}
+
+.hero p{
+    max-width:680px;
+    margin:25px auto;
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn{
+    display:inline-block;
+    padding:16px 35px;
+    margin:8px;
+    border-radius:7px;
+    background:var(--red);
+    color:#ffb347;
+    text-decoration:none;
+    font-weight:bold;
+    border:2px solid var(--red);
+    transition:.3s;
+    box-shadow:5px 5px 0 rgba(100,0,0,.25);
+}
+
+.btn:hover{
+    transform:translateY(-6px);
+    background:#650000;
+    box-shadow:8px 10px 0 rgba(100,0,0,.3);
+}
+
+.btn-outline{
+    background:transparent;
+    color:var(--red);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:100px 8%;
+    position:relative;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.title h2{
+    font-size:42px;
+    color:var(--red);
+    text-transform:uppercase;
+}
+
+.title h2::after{
+    content:"";
+    display:block;
+    width:80px;
+    height:5px;
+    background:var(--red);
+    margin:15px auto;
+    border-radius:5px;
+}
+
+.title p{
+    color:var(--red-dark);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    background:#ff9d19;
+}
+
+.about-box{
+    max-width:900px;
+    margin:auto;
+    padding:45px;
+    text-align:center;
+    border:3px solid var(--red);
+    border-radius:20px;
+    background:rgba(255,255,255,.12);
+    box-shadow:10px 10px 0 rgba(155,0,0,.2);
+}
+
+.about-box p{
+    font-size:18px;
+    line-height:2;
+}
+
+/* =========================
+   KEGIATAN
+========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    position:relative;
+    padding:40px 25px;
+    text-align:center;
+    border:3px solid var(--red);
+    border-radius:15px;
+    background:#ffab32;
+    transition:.4s;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:rgba(255,255,255,.2);
+    border-radius:50%;
+    top:-50px;
+    right:-50px;
+}
+
+.card:hover{
+    transform:translateY(-15px) rotate(-1deg);
+    box-shadow:10px 15px 0 rgba(155,0,0,.25);
+}
+
+.icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:var(--red-dark);
+    line-height:1.7;
+}
+
+/* =========================
+   STATISTIK
+========================= */
+
+.stats-section{
+    background:
+        linear-gradient(
+            135deg,
+            #8b0000,
+            #b30000
+        );
+    color:#ffb347;
+}
+
+.stats-section .title h2,
+.stats-section .title p{
+    color:#ffb347;
+}
+
+.stats-section .title h2::after{
+    background:#ffb347;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.stat{
+    text-align:center;
+    padding:40px 20px;
+    border:2px solid #ffb347;
+    border-radius:15px;
+    background:rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:scale(1.05);
+}
+
+.stat h3{
+    font-size:55px;
+    color:#ffb347;
+}
+
+.stat p{
+    color:#fff0cf;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+    max-width:800px;
+    margin:auto;
+}
+
+.timeline-item{
+    display:flex;
+    gap:25px;
+    margin-bottom:30px;
+    align-items:center;
+}
+
+.number{
+    min-width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--red);
+    color:#ffb347;
+    border-radius:50%;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.timeline-item h3{
+    margin-bottom:6px;
+}
+
+.timeline-item p{
+    color:var(--red-dark);
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    text-align:center;
+    background:
+        radial-gradient(circle,
+        #ffbd59,
+        #ff8c00 70%);
+}
+
+.cta h2{
+    font-size:42px;
+    color:var(--red);
+}
+
+.cta p{
+    margin:20px auto;
+    max-width:600px;
+    line-height:1.7;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:35px 20px;
+    background:#570000;
+    color:#ffb347;
+    line-height:1.8;
+}
+
+footer strong{
+    font-size:20px;
+}
+
+/* =========================
+   ANIMASI
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes rotate{
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes titleMove{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero h2{
+        font-size:22px;
+    }
+
+    .cards,
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .timeline-item{
+        align-items:flex-start;
+    }
+
+    section{
+        padding:75px 6%;
+    }
+
+    .title h2{
+        font-size:32px;
+    }
+
+    .cta h2{
+        font-size:32px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        GEMA <span>SWARA</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kegiatan">Kegiatan</a></li>
+        <li><a href="#prestasi">Prestasi</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🎺 MARCHING BAND 🎺
+        </div>
+
+        <h1>
+            GEMA SWARA
+        </h1>
+
+        <h2>
+            WIBAWA MUKTI
+        </h2>
+
+        <p>
+            Satu irama, satu langkah, satu semangat.
+            Bersama Gema Swara Wibawa Mukti,
+            kami menciptakan harmoni melalui musik,
+            gerakan, disiplin, dan kebersamaan.
+        </p>
+
+        <a href="#tentang" class="btn">
+            ✦ TENTANG KAMI
+        </a>
+
+        <a href="#kegiatan" class="btn btn-outline">
+            ▶ LIHAT KEGIATAN
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TENTANG
+========================= -->
+
+<section class="about" id="tentang">
+
+    <div class="title">
+
+        <h2>Tentang Kami</h2>
+
+        <p>
+            Mengenal lebih dekat Gema Swara Wibawa Mukti
+        </p>
+
+    </div>
+
+    <div class="about-box">
+
+        <p>
+            <b>Gema Swara Wibawa Mukti</b> adalah
+            marching band yang menjadi wadah bagi para
+            generasi muda untuk mengembangkan bakat
+            dalam bidang musik, seni, dan pertunjukan.
+
+            Dengan mengutamakan kedisiplinan,
+            kekompakan, kreativitas, dan semangat
+            kebersamaan, setiap anggota berusaha
+            memberikan penampilan terbaik dalam
+            setiap kesempatan.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     KEGIATAN
+========================= -->
+
+<section id="kegiatan">
+
+    <div class="title">
+
+        <h2>Kegiatan Kami</h2>
+
+        <p>
+            Berlatih, berkembang, dan tampil bersama
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">🥁</div>
+
+            <h3>DRUM CORPS</h3>
+
+            <p>
+                Latihan ritme, tempo, teknik pukulan,
+                dan kekompakan antar pemain perkusi.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎺</div>
+
+            <h3>BRASS</h3>
+
+            <p>
+                Mengembangkan kemampuan memainkan
+                instrumen brass serta membangun
+                harmoni musik.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🏳️</div>
+
+            <h3>COLOR GUARD</h3>
+
+            <p>
+                Menampilkan gerakan visual dan
+                koreografi yang menarik dalam
+                setiap pertunjukan.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎵</div>
+
+            <h3>MUSIK</h3>
+
+            <p>
+                Mempelajari lagu, melodi, tempo,
+                dinamika, dan musikalitas.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">👥</div>
+
+            <h3>KEKOMPAKAN</h3>
+
+            <p>
+                Membangun kerja sama dan rasa
+                kebersamaan antar seluruh anggota.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🏆</div>
+
+            <h3>KOMPETISI</h3>
+
+            <p>
+                Mengikuti berbagai pertunjukan
+                dan kompetisi marching band.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRESTASI
+========================= -->
+
+<section class="stats-section" id="prestasi">
+
+    <div class="title">
+
+        <h2>PERJALANAN KAMI</h2>
+
+        <p>
+            Terus melangkah menuju prestasi
+        </p>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <h3>20+</h3>
+
+            <p>
+                Penampilan
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>10+</h3>
+
+            <p>
+                Kompetisi
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>50+</h3>
+
+            <p>
+                Anggota
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TIMELINE
+========================= -->
+
+<section>
+
+    <div class="title">
+
+        <h2>PERJALANAN</h2>
+
+        <p>
+            Langkah kami dari latihan hingga pertunjukan
+        </p>
+
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="number">01</div>
+
+            <div>
+                <h3>LATIHAN</h3>
+                <p>
+                    Meningkatkan kemampuan musik,
+                    teknik, dan kedisiplinan.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="number">02</div>
+
+            <div>
+                <h3>PERSIAPAN</h3>
+                <p>
+                    Menyiapkan koreografi,
+                    musik, kostum, dan formasi.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="number">03</div>
+
+            <div>
+                <h3>PERTUNJUKAN</h3>
+                <p>
+                    Menampilkan hasil latihan
+                    dengan penuh percaya diri.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="number">04</div>
+
+            <div>
+                <h3>PRESTASI</h3>
+                <p>
+                    Terus berkembang dan memberikan
+                    pencapaian terbaik.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta" id="kontak">
+
+    <h2>SIAP BERGABUNG?</h2>
+
+    <p>
+        Jadilah bagian dari Gema Swara Wibawa Mukti.
+        Mari ciptakan suara, langkah, dan kenangan
+        bersama.
+    </p>
+
+    <a href="#" class="btn">
+        🎺 GABUNG SEKARANG
+    </a>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <strong>
+        GEMA SWARA WIBAWA MUKTI
+    </strong>
+
+    <br>
+
+    Marching Band • Music • Discipline • Unity
+
+    <br><br>
+
+    © 2026 Gema Swara Wibawa Mukti
+
+</footer>
+
+</body>
+</html>
